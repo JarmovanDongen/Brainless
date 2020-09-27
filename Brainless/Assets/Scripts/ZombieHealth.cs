@@ -19,7 +19,6 @@ public class ZombieHealth : MonoBehaviour
     public void TakeDamage(Vector3 shootingPosition, int shootingStrength)
     {
         Vector3 shootingDirection = transform.position - shootingPosition;
-        Debug.Log(transform.position);
         Debug.DrawRay(shootingPosition, shootingDirection, Color.red, 5);
         Vector3 shootingForce = shootingDirection.normalized * shootingStrength;
         GetComponent<Rigidbody>().AddForce(shootingForce, ForceMode.Impulse);
@@ -34,6 +33,13 @@ public class ZombieHealth : MonoBehaviour
         healthBar.fillAmount = curHealth / maxHealth;
         float curHealthPct = (float)curHealth / (float)maxHealth;
         OnHealthPctChanged(curHealthPct);
-        Debug.Log(curHealth);
+    }
+
+    public void Die()
+    {
+        if (curHealth < 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
