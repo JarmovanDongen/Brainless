@@ -12,6 +12,13 @@ public class ZombieHealth : MonoBehaviour
 
     public event Action<float> OnHealthPctChanged = delegate { };
 
+    private void Update()
+    {
+        if (curHealth < 0)
+        {
+            Die();
+        }
+    }
     private void OnEnable()
     {
         curHealth = maxHealth;
@@ -37,9 +44,7 @@ public class ZombieHealth : MonoBehaviour
 
     public void Die()
     {
-        if (curHealth < 0)
-        {
             Destroy(this.gameObject);
-        }
+        Score.scoreValue += 10;
     }
 }
