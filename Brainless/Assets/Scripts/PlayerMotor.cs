@@ -8,8 +8,8 @@ public class PlayerMotor : MonoBehaviour
     float moveSpeed;
     float walkSpeed = 4;
     float sprintSpeed = 6;
-    float jumpSpeed = 20;
-    float gravity = 1;
+    float jumpSpeed = 60;
+    float gravity = 3;
 
     Vector3 moveDir;
 
@@ -33,6 +33,7 @@ public class PlayerMotor : MonoBehaviour
         if (controller.isGrounded)
         {
             moveDir = new Vector3(moveX, 0, moveZ);
+            moveDir = transform.TransformDirection(moveDir);
             if (Input.GetKey(KeyCode.LeftShift) && moveZ == 1)
             {
                 moveSpeed = sprintSpeed;
