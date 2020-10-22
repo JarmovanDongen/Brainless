@@ -6,12 +6,28 @@ using UnityEngine.UI;
 
 public class ZombieHealth : MonoBehaviour
 {
+    Spawner spawn; 
+
     public Image healthBar; 
     [SerializeField] private float maxHealth = 100;
     private float curHealth;
 
     public event Action<float> OnHealthPctChanged = delegate { };
 
+<<<<<<< Updated upstream
+=======
+    private void Start()
+    {
+        spawn = GameObject.Find("Spawners").GetComponent<Spawner>();
+    }
+    private void Update()
+    {
+        if (curHealth < 0)
+        {
+            Die();
+        }
+    }
+>>>>>>> Stashed changes
     private void OnEnable()
     {
         curHealth = maxHealth;
@@ -40,6 +56,11 @@ public class ZombieHealth : MonoBehaviour
         if (curHealth < 0)
         {
             Destroy(this.gameObject);
+<<<<<<< Updated upstream
         }
+=======
+            Score.scoreValue += 10;
+            spawn.KillZombie();
+>>>>>>> Stashed changes
     }
 }

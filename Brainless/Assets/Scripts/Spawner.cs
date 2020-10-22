@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     private int waveNumber = 0;
     private int enemySpawnAmount = 0;
     private int enemiesKilled = 0;
+
     public GameObject[] spawners;
     public GameObject enemy;
     // Start is called before the first frame update
@@ -55,5 +56,19 @@ public class Spawner : MonoBehaviour
         waveNumber++;
         enemySpawnAmount += 3;
         enemiesKilled = 0;
+
+        for (int i = 0; i < enemySpawnAmount; i++)
+        {
+            SpawnEnemy();
+        }
+    }
+
+    public void KillZombie()
+    {
+        enemiesKilled++;
+        if (enemiesKilled >= enemySpawnAmount)
+        {
+            WaveIncrement();
+        }
     }
 }
