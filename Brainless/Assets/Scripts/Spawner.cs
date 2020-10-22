@@ -55,5 +55,19 @@ public class Spawner : MonoBehaviour
         waveNumber++;
         enemySpawnAmount += 3;
         enemiesKilled = 0;
+
+        for (int i = 0; i < enemySpawnAmount; i++)
+        {
+            SpawnEnemy();
+        }
+    }
+
+    public void KillZombie()
+    {
+        enemiesKilled++;
+        if (enemiesKilled >= enemySpawnAmount)
+        {
+            WaveIncrement();
+        }
     }
 }

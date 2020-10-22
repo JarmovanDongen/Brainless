@@ -6,12 +6,19 @@ using UnityEngine.UI;
 
 public class ZombieHealth : MonoBehaviour
 {
+
+    private Spawner spawn;
     public Image healthBar; 
     [SerializeField] private float maxHealth = 100;
     private float curHealth;
 
     public event Action<float> OnHealthPctChanged = delegate { };
 
+
+    private void Start()
+    {
+        spawn = GameObject.Find("Spawners").GetComponent<Spawner>();
+    }
     private void Update()
     {
         if (curHealth < 0)
@@ -44,7 +51,8 @@ public class ZombieHealth : MonoBehaviour
 
     public void Die()
     {
-            Destroy(this.gameObject);
+        Destroy(this.gameObject);
         Score.scoreValue += 10;
+        spawn.KillZombie();
     }
 }
