@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
     private int enemiesKilled = 0;
     public GameObject[] spawners;
     public GameObject enemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +33,14 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy(float healthIncrease = 0)
     {
         int spawnerID = Random.Range(0, spawners.Length);
-        Instantiate(enemy, spawners[spawnerID].transform.position, spawners[spawnerID].transform.rotation);
+        GameObject healthIncrement = Instantiate(enemy, spawners[spawnerID].transform.position, spawners[spawnerID].transform.rotation);
+        
+        ZombieHealth ZombieScript = healthIncrement.GetComponent<ZombieHealth>();
+        ZombieScript.maxHealth += healthIncrease;
+        ZombieScript.curHealth = ZombieScript.maxHealth;
     }
 
     private void StartWave()
@@ -55,10 +60,11 @@ public class Spawner : MonoBehaviour
         waveNumber++;
         enemySpawnAmount += 3;
         enemiesKilled = 0;
+        
 
         for (int i = 0; i < enemySpawnAmount; i++)
         {
-            SpawnEnemy();
+            SpawnEnemy(30);
         }
     }
 

@@ -9,8 +9,8 @@ public class ZombieHealth : MonoBehaviour
 
     private Spawner spawn;
     public Image healthBar; 
-    [SerializeField] private float maxHealth = 100;
-    private float curHealth;
+    [SerializeField] public float maxHealth = 100;
+    public float curHealth;
 
     public event Action<float> OnHealthPctChanged = delegate { };
 
@@ -25,6 +25,8 @@ public class ZombieHealth : MonoBehaviour
         {
             Die();
         }
+
+        
     }
     private void OnEnable()
     {
@@ -38,6 +40,7 @@ public class ZombieHealth : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(shootingForce, ForceMode.Impulse);
 
         ModifyHealth(-10);
+        Debug.Log(curHealth);
     }
 
     public void ModifyHealth(int amount)
