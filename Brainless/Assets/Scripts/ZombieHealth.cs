@@ -40,7 +40,7 @@ public class ZombieHealth : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(shootingForce, ForceMode.Impulse);
 
         ModifyHealth(-10);
-        Debug.Log(curHealth);
+       
     }
 
     public void ModifyHealth(int amount)
@@ -54,6 +54,8 @@ public class ZombieHealth : MonoBehaviour
 
     public void Die()
     {
+        PowerUps powerUp = GameObject.Find("PowerUpManager").GetComponent<PowerUps>();
+        powerUp.CheckDropRate(transform);
         Destroy(this.gameObject);
         Score.scoreValue += 10;
         spawn.KillZombie();

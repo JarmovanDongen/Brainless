@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1871358107404351288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913243966010396298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dded1ff6a99f8ab449eeedce7d194a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 2
 --- !u!1001 &757235443259908539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13,11 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 8913243965684580828}
     - target: {fileID: 8156029602467557169, guid: 1d440a8f712f2b448b35835494a6f9a9, type: 3}
       propertyPath: m_Name
-      value: Zombie Variant
+      value: Main Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 8156029602467557169, guid: 1d440a8f712f2b448b35835494a6f9a9, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156029602467557169, guid: 1d440a8f712f2b448b35835494a6f9a9, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8156029602467557178, guid: 1d440a8f712f2b448b35835494a6f9a9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -69,6 +86,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d440a8f712f2b448b35835494a6f9a9, type: 3}
+--- !u!1 &8913243966010396298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8156029602467557169, guid: 1d440a8f712f2b448b35835494a6f9a9, type: 3}
+  m_PrefabInstance: {fileID: 757235443259908539}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1348896159111779097 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1745708318076744354, guid: 1d440a8f712f2b448b35835494a6f9a9, type: 3}
