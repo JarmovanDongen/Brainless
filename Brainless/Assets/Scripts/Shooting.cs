@@ -11,10 +11,12 @@ public class Shooting : MonoBehaviour
     public int shootingRange = 10;
     public int damage = 10;
 
+    public AudioSource leafBlowerSFX;
+
     // Start is called before the first frame update
     void Start()
     {
-       
+        leafBlowerSFX = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,7 +24,8 @@ public class Shooting : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            shooting();   
+            shooting();
+            leafBlowerSFX.Play();
         }
     }
 
