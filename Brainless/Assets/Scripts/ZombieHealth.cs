@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class ZombieHealth : MonoBehaviour
 {
-
     private Spawner spawn;
     public Image healthBar; 
     [SerializeField] public float maxHealth = 100;
@@ -23,7 +22,8 @@ public class ZombieHealth : MonoBehaviour
     {
         if (curHealth < 0)
         {
-            Die();
+            Destroy(this.gameObject);
+            
         }
 
         
@@ -38,9 +38,6 @@ public class ZombieHealth : MonoBehaviour
         Debug.DrawRay(shootingPosition, shootingDirection, Color.red, 5);
         Vector3 shootingForce = shootingDirection.normalized * shootingStrength;
         GetComponent<Rigidbody>().AddForce(shootingForce, ForceMode.Impulse);
-
-        ModifyHealth(-10);
-       
     }
 
     public void ModifyHealth(int amount)
@@ -52,11 +49,10 @@ public class ZombieHealth : MonoBehaviour
         OnHealthPctChanged(curHealthPct);
     }
 
-    public void Die()
+    public void OnDestroy()
     {
         PowerUps powerUp = GameObject.Find("PowerUpManager").GetComponent<PowerUps>();
         powerUp.CheckDropRate(transform);
-        Destroy(this.gameObject);
         Score.scoreValue += 10;
         spawn.KillZombie();
     }

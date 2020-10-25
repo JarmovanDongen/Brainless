@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class PowerUps : MonoBehaviour
 {
+    public Shooting shooting;
     private GameObject DamagePowerUp;
     public int dropChance = 2;
     // Start is called before the first frame update
     void Start()
     {
-        DamagePowerUp = Resources.Load("Assets/Resources/Cube.prefab") as GameObject;
-        Debug.Log(Resources.Load("Assets/Prefabs/LeafBlowerWeapon.fbx"));
-    }
+        DamagePowerUp = Resources.Load("LeafBlowerWeapon-Variant") as GameObject;
+        Debug.Log(Resources.Load("LeafBlowerWeapon-Variant"));
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (DamagePowerUp == null)
-        {
-           // Debug.Log("Test");
-        }
     }
 
     public void CheckDropRate(Transform position)
@@ -28,8 +21,10 @@ public class PowerUps : MonoBehaviour
         Debug.Log(i);
         if ( i == dropChance /2)
         {
-            Instantiate(DamagePowerUp, transform.position, Quaternion.identity);
-            Debug.Log("spawnPowerUp");
+            GameObject damPowerUp = Instantiate(DamagePowerUp, position.position, Quaternion.identity);
+            damPowerUp.transform.rotation = Quaternion.Euler(-90, 0, 0);
+            damPowerUp.transform.position = new Vector3(position.position.x, 3, position.position.z);
+
         }
     }
 }

@@ -9,6 +9,7 @@ public class Shooting : MonoBehaviour
     public Vector3 shootingPosition;
     public GameObject leafBlower;
     public int shootingRange = 10;
+    public int damage = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class Shooting : MonoBehaviour
         {
             GameObject zombie = hit.collider.gameObject;
             zombie.GetComponent<ZombieHealth>().TakeDamage(shootingPosition, shootingStrength);
-
+            zombie.GetComponent<ZombieHealth>().ModifyHealth(-damage);
         }
 
     }
