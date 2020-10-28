@@ -29,27 +29,29 @@ public class Enemy : MonoBehaviour
 
     void Movement()
     {
-        
+        transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        //transform.GetComponent<Rigidbody>().velocity = transform.forward * moveSpeed;
 
         if (distPlayer <= distBrain)
         {
+
             transform.LookAt(player.transform);
-            if (Vector3.Distance(transform.position, player.transform.position) >= minDist)
+/*            bool playerIsCloseMin = Vector3.Distance(transform.position, player.transform.position) >= minDist;
+            bool playerIsCloseMax = Vector3.Distance(transform.position, player.transform.position) <= maxDist;
+            if (playerIsCloseMin && playerIsCloseMax)
             {
-                transform.position += transform.forward * moveSpeed * Time.deltaTime;
-            }
+                
+            }*/
 
-            if (Vector3.Distance(transform.position, player.transform.position) <= maxDist)
-            {
-
-            }
         }
         else if (distPlayer > distBrain)
         {
-            transform.LookAt(brain.transform);
-            transform.position += transform.forward * moveSpeed * Time.deltaTime;
-        }
+            Vector3 brainPos = new Vector3(brain.transform.position.x, transform.position.y, brain.transform.position.z);
+            transform.LookAt(brainPos);
+            //transform.position += transform.forward * moveSpeed * Time.deltaTime;
 
+            
+        }
     }
 
     void calcDist()

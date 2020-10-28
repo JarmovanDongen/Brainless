@@ -5,17 +5,18 @@ using UnityEngine.UIElements;
 
 public class Spawner : MonoBehaviour
 {
-    private int waveNumber = 0;
+    public int waveNumber = 0;
     private int enemySpawnAmount = 0;
     private int enemiesKilled = 0;
     public GameObject[] spawners;
     public GameObject enemy;
 
+    public AudioSource waveBell;
     // Start is called before the first frame update
     void Start()
     {
         spawners = new GameObject[4];
-
+        waveBell = GetComponent<AudioSource>();
         for (int i = 0; i < spawners.Length; i++)
         {
             spawners[i] = transform.GetChild(i).gameObject;
@@ -48,7 +49,7 @@ public class Spawner : MonoBehaviour
         waveNumber = 1;
         enemySpawnAmount = 3;
         enemiesKilled = 0;
-
+        waveBell.Play();
         for (int i = 0; i < enemySpawnAmount; i++)
         {
             SpawnEnemy();
@@ -60,8 +61,7 @@ public class Spawner : MonoBehaviour
         waveNumber++;
         enemySpawnAmount += 3;
         enemiesKilled = 0;
-        
-
+        waveBell.Play();
         for (int i = 0; i < enemySpawnAmount; i++)
         {
             SpawnEnemy(30);

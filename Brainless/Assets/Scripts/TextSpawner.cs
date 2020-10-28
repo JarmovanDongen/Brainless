@@ -9,6 +9,9 @@ public class TextSpawner : MonoBehaviour
     public Color color;
     public Text moreDamage;
     public bool fadeText;
+
+    public Text waveCount;
+    public Spawner spawner;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +34,8 @@ public class TextSpawner : MonoBehaviour
                 moreDamage.enabled = false;
             }
         }
+        waveCount.text = "Wave: " + spawner.waveNumber.ToString();
+        //Debug.Log("waveNumber = " + spawner.waveNumber);
     }
     public void SpawnText()
     {

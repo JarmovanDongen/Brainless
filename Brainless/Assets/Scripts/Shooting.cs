@@ -36,7 +36,7 @@ public class Shooting : MonoBehaviour
         RaycastHit hit;
         Vector3 direction = leafBlowerRotation * new Vector3(0,0,1);
         
-        Debug.DrawRay(shootingPosition, direction, Color.red, 5000);
+        //Debug.DrawRay(shootingPosition, direction, Color.red, 5000);
         bool hasCollided = Physics.Raycast(shootingPosition, direction, out hit, shootingRange, LayerMask.NameToLayer("LeafBlower"));
         
         if (hasCollided)

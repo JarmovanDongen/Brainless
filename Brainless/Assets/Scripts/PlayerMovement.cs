@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
-
-    public float speed = 12f;
+    
+    public float speed;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
 
@@ -32,8 +33,8 @@ public class PlayerMovement : MonoBehaviour
 
         //Moves the player in the direction it is looking
         Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(move * speed * Time.deltaTime);
-
+        controller.Move(move.normalized * speed * Time.deltaTime);
+        
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
@@ -42,5 +43,17 @@ public class PlayerMovement : MonoBehaviour
         //Adds the gravity to the player
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    public void SpeedBoost()
+    {
+        speed += 10;
+       StartCoroutine("Timer");
+    }
+
+    public IEnumerator Timer()
+    {
+        yield return new WaitForSeconds(10);
+        speed -= 10;
     }
 }
