@@ -47,7 +47,7 @@ public class Brain : MonoBehaviour
             brainCurHealth += 10 * Time.deltaTime;
 
             healthBar.fillAmount = brainCurHealth / brainMaxHealth;
-        Debug.Log(brainCurHealth);
+        //Debug.Log(brainCurHealth);
     }
     public void OnTriggerEnter(Collider other)
     {

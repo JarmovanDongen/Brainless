@@ -87,7 +87,7 @@ Animator:
   m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -105,7 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089799a82eab2e840a7b8f0d73ad3e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
   maxHealth: 100
+  curHealth: 0
+  rb: {fileID: 8156029602467557183}
 --- !u!65 &8156029602467557180
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -151,6 +154,9 @@ MonoBehaviour:
   moveSpeed: 3
   maxDist: 10
   minDist: 5
+  brain: {fileID: 0}
+  distBrain: 0
+  distPlayer: 0
 --- !u!223 &3756171366199266348
 Canvas:
   m_ObjectHideFlags: 0

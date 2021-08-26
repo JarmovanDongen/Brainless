@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
-
+    public float x;
+    public float z;
     public Transform GroundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -18,7 +19,12 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
-    void Update()
+    private void Update()
+    {
+         x = Input.GetAxisRaw("Horizontal");
+         z = Input.GetAxisRaw("Vertical");
+    }
+    void FixedUpdate()
     {
         //Checks if the player is standing on the ground to set the velocity to 0
         isGrounded = Physics.CheckSphere(GroundCheck.position, groundDistance, groundMask);
@@ -28,8 +34,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+
 
         //Moves the player in the direction it is looking
         Vector3 move = transform.right * x + transform.forward * z;

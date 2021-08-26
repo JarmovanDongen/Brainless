@@ -10,6 +10,10 @@ public class Spawner : MonoBehaviour
     private int enemiesKilled = 0;
     public GameObject[] spawners;
     public GameObject enemy;
+    public GameObject boss;
+    public GameObject bossSpawnPoint;
+    public TargetSpawner spawner;
+    public ZombieHealth health;
 
     public AudioSource waveBell;
     // Start is called before the first frame update
@@ -34,7 +38,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy(float healthIncrease = 0)
+    private void SpawnEnemy(int healthIncrease = 0)
     {
         int spawnerID = Random.Range(0, spawners.Length);
         GameObject healthIncrement = Instantiate(enemy, spawners[spawnerID].transform.position, spawners[spawnerID].transform.rotation);
@@ -44,10 +48,12 @@ public class Spawner : MonoBehaviour
         ZombieScript.curHealth = ZombieScript.maxHealth;
     }
 
+   
+
     private void StartWave()
     {
         waveNumber = 1;
-        enemySpawnAmount = 3;
+        enemySpawnAmount = 2;
         enemiesKilled = 0;
         waveBell.Play();
         for (int i = 0; i < enemySpawnAmount; i++)
@@ -56,16 +62,28 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void WaveIncrement()
+    public void WaveIncrement()
     {
-        waveNumber++;
-        enemySpawnAmount += 3;
-        enemiesKilled = 0;
-        waveBell.Play();
-        for (int i = 0; i < enemySpawnAmount; i++)
+        if (waveNumber == 4 || waveNumber == 9 || waveNumber == 14)
         {
-            SpawnEnemy(30);
+            BossSpawn();
+            spawner.enableRandomTarget();
+            waveNumber++;
+            enemiesKilled = 0;
         }
+        else
+        {
+            spawner.disableSpawner();
+            waveNumber++;
+            enemySpawnAmount += 1;
+            enemiesKilled = 0;
+            waveBell.Play();
+            for (int i = 0; i < enemySpawnAmount; i++)
+            {
+                SpawnEnemy(30);
+            }
+        }
+        
     }
 
     public void KillZombie()
@@ -75,5 +93,10 @@ public class Spawner : MonoBehaviour
         {
             WaveIncrement();
         }
+
+    }
+    private void BossSpawn(int bossHealthIncrease = 0)
+    {
+        GameObject BossSpawn = Instantiate(boss, bossSpawnPoint.transform.position, bossSpawnPoint.transform.rotation);
     }
 }

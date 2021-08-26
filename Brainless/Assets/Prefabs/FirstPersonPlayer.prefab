@@ -301,6 +301,8 @@ MonoBehaviour:
   shootingPosition: {x: 0, y: 0, z: 0}
   leafBlower: {fileID: 8149579281312323284}
   shootingRange: 10
+  damage: 1
+  leafBlowerSFX: {fileID: 0}
 --- !u!1001 &9068128676420004741
 PrefabInstance:
   m_ObjectHideFlags: 0

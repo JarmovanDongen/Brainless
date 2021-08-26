@@ -13,7 +13,7 @@ public class PowerUps : MonoBehaviour
     {
         DamagePowerUp = Resources.Load("LeafBlowerWeapon-Variant") as GameObject;
         speedPowerUp = Resources.Load("Shoe") as GameObject;
-        Debug.Log(Resources.Load("LeafBlowerWeapon-Variant"));
+        //Debug.Log(Resources.Load("LeafBlowerWeapon-Variant"));
 
     }
 
@@ -33,7 +33,7 @@ public class PowerUps : MonoBehaviour
     public void CheckDropRateSpeed(Transform position)
     {
         int j = Random.Range(0, dropChance);
-        Debug.Log(j);
+        //Debug.Log(j);
         if (j == dropChance / 2)
         {
             GameObject speedPU = Instantiate(speedPowerUp, position.position, Quaternion.identity);
