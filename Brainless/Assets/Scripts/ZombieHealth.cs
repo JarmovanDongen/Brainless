@@ -25,8 +25,8 @@ public class ZombieHealth : MonoBehaviour
         {
             if (CompareTag("Boss"))
             {
+                
                 spawn.WaveIncrement();
-
             }
             Destroy(this.gameObject);
 
@@ -69,6 +69,5 @@ public class ZombieHealth : MonoBehaviour
         Score.scoreValue += 10;
         Debug.Log(spawn);
         spawn.KillZombie();
-
     }
 }

@@ -15,6 +15,9 @@ public class Spawner : MonoBehaviour
     public TargetSpawner spawner;
     public ZombieHealth health;
 
+    public GameObject fence;
+
+
     public AudioSource waveBell;
     // Start is called before the first frame update
     void Start()
@@ -64,17 +67,23 @@ public class Spawner : MonoBehaviour
 
     public void WaveIncrement()
     {
+        if (waveNumber == 5)
+        {
+            fence.SetActive(false);
+        }
         if (waveNumber == 4 || waveNumber == 9 || waveNumber == 14)
         {
             BossSpawn();
             spawner.enableRandomTarget();
             waveNumber++;
+            Debug.Log(waveNumber);
             enemiesKilled = 0;
         }
         else
         {
             spawner.disableSpawner();
             waveNumber++;
+            Debug.Log(waveNumber);
             enemySpawnAmount += 1;
             enemiesKilled = 0;
             waveBell.Play();
@@ -83,6 +92,12 @@ public class Spawner : MonoBehaviour
                 SpawnEnemy(30);
             }
         }
+
+        
+    }
+
+    public void DropFence()
+    {
         
     }
 
