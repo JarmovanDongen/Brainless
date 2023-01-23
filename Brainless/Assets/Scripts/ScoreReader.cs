@@ -7,6 +7,8 @@ public class ScoreReader : MonoBehaviour
 {
     public Text score;
 
+
+
     private void Update()
     {
         score.text = "YOUR SCORE: " + Score.scoreValue.ToString();

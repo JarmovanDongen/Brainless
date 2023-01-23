@@ -16,6 +16,7 @@ public class Spawner : MonoBehaviour
     public ZombieHealth health;
 
     public GameObject fence;
+    public GameObject text;
 
 
     public AudioSource waveBell;
@@ -74,6 +75,8 @@ public class Spawner : MonoBehaviour
         if (waveNumber == 4 || waveNumber == 9 || waveNumber == 14)
         {
             BossSpawn();
+            waveBell.Play();
+
             spawner.enableRandomTarget();
             waveNumber++;
             Debug.Log(waveNumber);

@@ -21,9 +21,10 @@ public class EndGame : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
-            Debug.Log("Eindelijk");
-            SceneManager.LoadScene("Victory", LoadSceneMode.Single);
+        { 
+            SceneManager.LoadScene("Victory");
+            Cursor.lockState = CursorLockMode.None;
+
         }
     }
 }

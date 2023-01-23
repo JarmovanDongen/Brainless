@@ -23,6 +23,7 @@ public class ZombieHealth : MonoBehaviour
 
         if (curHealth <= 0)
         {
+            Score.scoreValue += 10;
             if (CompareTag("Boss"))
             {
                 
@@ -66,7 +67,6 @@ public class ZombieHealth : MonoBehaviour
         PowerUps powerUp = GameObject.Find("PowerUpManager").GetComponent<PowerUps>();
         powerUp.CheckDropRateDamage(transform);
         powerUp.CheckDropRateSpeed(transform);
-        Score.scoreValue += 10;
         Debug.Log(spawn);
         spawn.KillZombie();
     }

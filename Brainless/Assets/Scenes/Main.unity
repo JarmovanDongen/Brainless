@@ -304,6 +304,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1000013870849648, guid: df9c3c7aaeeef154bb7184ad6f179ece, type: 3}
   m_PrefabInstance: {fileID: 2049352120}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &59789187 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4000011162724236, guid: df9c3c7aaeeef154bb7184ad6f179ece, type: 3}
+  m_PrefabInstance: {fileID: 2049352120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &77815060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2639,6 +2644,7 @@ MonoBehaviour:
   spawner: {fileID: 1794150726}
   health: {fileID: 0}
   fence: {fileID: 59789185}
+  text: {fileID: 0}
   waveBell: {fileID: 0}
 --- !u!4 &837616869
 Transform:
@@ -9715,17 +9721,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390413760}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -18.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -0.15454578}
+  m_LocalScale: {x: 0.16666663, y: 0.16666667, z: 0.16666663}
   m_Children:
   - {fileID: 1423883024}
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 59789187}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 78.12, y: 20.4}
+  m_AnchoredPosition: {x: 3.5416489, y: 3.3225498}
   m_SizeDelta: {x: 1115.4667, y: 475.3333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1402841383
@@ -13014,7 +13020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013870849648, guid: df9c3c7aaeeef154bb7184ad6f179ece, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000011162724236, guid: df9c3c7aaeeef154bb7184ad6f179ece, type: 3}
       propertyPath: m_LocalPosition.x
